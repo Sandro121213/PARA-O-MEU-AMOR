@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1 ano e 6 meses ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { overflow-x: hidden; }
+
+    /* corações */
+    .heart { position: fixed; top: -10px; animation: fall linear infinite; z-index:0; }
+    @keyframes fall { to { transform: translateY(110vh); } }
+
+    .fade-in { animation: fadeIn 2s ease-in; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    .zoom:hover { transform: scale(1.08); transition: 0.3s; }
+
+    .pulse { animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
+
+    #intro {
+      position: fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      background:#000;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:9999;
+    }
+  </style>
+</head>
+<body class="bg-danger bg-gradient text-white">
+
+<div id="intro">
+  <h1 class="mb-4">Essa página é especial ❤️</h1>
+  <button class="btn btn-light btn-lg pulse" onclick="entrar()">Entrar</button>
+</div>
+
+<div id="hearts"></div>
+
+<div class="container text-center py-5 fade-in">
+  <h1 class="display-4">Meu amor ❤️</h1>
+  <p class="lead">1 ano e 6 meses ao seu lado</p>
+  <h4 id="contador"></h4>
+</div>
+
+<div class="container">
+  <div class="card bg-light text-dark shadow-lg p-4 mb-5 fade-in">
+    <h2 class="text-center">Uma mensagem pra você 💌</h2>
+    <p id="mensagem1" class="mt-3 small"></p>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <h2 class="text-center mb-4">Nossa Galeria 📸</h2>
+  <div class="row" id="galeria"></div>
+</div>
+
+<div class="container mb-5">
+  <h2 class="text-center mb-4">Nossa Música 🎶</h2>
+  <audio id="player" controls class="w-100"></audio>
+</div>
+
+<div class="container text-center py-5">
+  <button class="btn btn-light btn-lg pulse" onclick="mostrarSurpresa()">Clique aqui ❤️</button>
+</div>
+
+<div class="modal fade" id="surpresaModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-dark">
+      <div class="modal-body text-center">
+        <h2 class="mb-3">Meu amor ❤️</h2>
+        <p id="mensagemModal" class="small"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function entrar(){
+  document.getElementById('intro').style.display='none';
+  player.play().catch(()=>{});
+}
+
+// contador
+const inicio = new Date("2024-10-18");
+function atualizarContador(){
+  const agora = new Date();
+  const diff = agora - inicio;
+  const dias = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("contador").innerText = `Estamos juntos há ${dias} dias ❤️`;
+}
+setInterval(atualizarContador,1000);
+atualizarContador();
+
+// digitação
+function digitar(texto, elementoId, velocidade=30){
+  let i=0;
+  const el=document.getElementById(elementoId);
+  el.innerHTML="";
+  function escrever(){
+    if(i<texto.length){
+      el.innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escrever,velocidade);
+    }
+  }
+  escrever();
+}
+
+// mensagem principal
+const texto1 = `Amor, hoje eu paro pra pensar em tudo que a gente viveu até aqui...
+E é impossível não sorrir lembrando de cada momento.
+Você chegou na minha vida de um jeito tão especial,
+e mudou completamente o meu mundo.
+Cada conversa, cada risada, cada instante contigo
+faz tudo valer a pena.
+Você é minha paz nos dias difíceis,
+é minha felicidade nos dias bons,
+é meu refúgio e meu lugar favorito.
+Eu amo o jeito que você me entende,
+o jeito que você cuida de mim,
+o jeito que você simplesmente é você.
+Se eu pudesse escolher mil vezes,
+escolheria você em todas elas.
+Obrigado por existir na minha vida.
+Eu te amo mais do que palavras conseguem dizer ❤️`;
+
+digitar(texto1,'mensagem1');
+
+// mensagem modal (15+ linhas)
+const textoModal = `Meu amor, eu queria conseguir colocar em palavras tudo que eu sinto por você...
+mas a verdade é que nem todas as palavras do mundo seriam suficientes.
+Você é a melhor coisa que já me aconteceu.
+Você é o meu presente mais lindo,
+o meu sonho realizado,
+o meu futuro.
+Cada momento ao seu lado é único.
+Cada abraço seu me traz paz.
+Cada sorriso seu ilumina tudo.
+Você me faz querer ser alguém melhor todos os dias.
+Você me faz acreditar no amor de verdade.
+E eu agradeço todos os dias por ter você comigo.
+Não importa o que aconteça,
+eu sempre vou estar ao seu lado.
+Sempre vou cuidar de você,
+sempre vou te amar,
+sempre vou escolher você.
+Você é tudo pra mim ❤️`;
+
+function mostrarSurpresa(){
+  var modal=new bootstrap.Modal(document.getElementById('surpresaModal'));
+  modal.show();
+  setTimeout(()=>{ digitar(textoModal,'mensagemModal',25); },300);
+}
+
+// GALERIA (como adicionar fotos)
+// coloque suas imagens na pasta /img e troque os nomes abaixo
+const imagens = [
+  "img/foto1.jpg",
+  "img/foto2.jpg",
+  "img/foto3.jpg"
+];
+
+const galeria = document.getElementById('galeria');
+imagens.forEach(src=>{
+  const col=document.createElement('div');
+  col.className='col-6 col-md-3 mb-3';
+  col.innerHTML=`<img src="${src}" class="img-fluid rounded shadow zoom">`;
+  galeria.appendChild(col);
+});
+
+// MÚSICAS (como adicionar)
+// coloque suas músicas na pasta /music
+const playlist=[
+  "music/mu1.mp3",
+  "music/mu2.mp3",
+  "music/mu3.mp3",
+  "music/mu4.mp3",
+  "music/mu5.mp3",
+  "music/mu6.mp3",
+];
+
+let index=0;
+const player=document.getElementById('player');
+player.src=playlist[index];
+
+player.addEventListener('ended',()=>{
+  index=(index+1)%playlist.length;
+  player.src=playlist[index];
+  player.play();
+});
+
+// corações
+function criarCoracoes(){
+  const container=document.getElementById('hearts');
+  for(let i=0;i<40;i++){
+    const span=document.createElement('span');
+    span.className='heart';
+    span.innerText='❤️';
+    span.style.left=Math.random()*100+'vw';
+    span.style.animationDuration=(Math.random()*5+5)+'s';
+    span.style.fontSize=(Math.random()*20+10)+'px';
+    container.appendChild(span);
+  }
+}
+criarCoracoes();
+</script>
+
+</body>
+</html>
