@@ -180,7 +180,11 @@ const galeria = document.getElementById('galeria');
 imagens.forEach(src=>{
   const col=document.createElement('div');
   col.className='col-6 col-md-3 mb-3';
-  col.innerHTML=`<img src="${src}" class="img-fluid rounded shadow zoom">`;
+  col.innerHTML=`
+  <div class="card border-0 shadow zoom">
+    <img src="${src}" class="w-100 rounded" style="height:260px; object-fit:cover;">
+  </div>
+`;
   galeria.appendChild(col);
 });
 
